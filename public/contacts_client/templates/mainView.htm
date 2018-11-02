@@ -1,0 +1,73 @@
+<div class="grey-back mt-5">
+    <div class="row p-4">
+        <div class="col-12 input-group">
+            <input ng-disabled="(users ? true : false) && !busy" ng-model="searchString" class="form-control"
+                   type="text"
+                   placeholder="Search Contacts.." aria-describedby="basic-addon2">
+        </div>
+    </div>
+    <div class="row pl-4 pr-4">
+        <div ng-repeat="contact in filteredContacts = (contacts | filter:searchString)" class="col-md-6 col-sm-12 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"><h5><span>{{contact.fname+' '+(contact.mname? contact.mname + ' ' :
+                        '')+contact.lname }}</span><a ng-click="removeContact($event, contact.email)"
+                                                      title="Remove Contact" href="#" style="text-decoration: none">
+                        <i class="fas fa-minus-circle float-right text-danger"></i></a></h5>
+                    </div>
+                    <p class="card-text">
+                    <p>{{contact.email}}</p>
+                    <p ng-if="contact.telephone">{{contact.telephone}}</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div ng-show="!contacts.length || !filteredContacts.length" class="col-md-12 col-sm-12 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text" ng-show="!users">You have no contacts{{(searchString && contacts.length) ?
+                        ' matching '+searchString+'.':'.'}}</p>
+                    <p class="card-text" ng-show="!users"><a href="#" ng-click="searchAll($event)">Try Searching all
+                        users to add contacts</a></p>
+                    <p class="card-text" ng-show="users">
+                        Results for user search {{searchString + ((users.length == 0) ? ' is empty.':'.') }}
+                        <a href="#" ng-click="clearSearchResult($event)">Clear Search</a>
+                        <span ng-show="(!users.length) && recommendations.length">
+                            <br>Below users are close to your friends
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="user in users" class="col-md-6 col-sm-12 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"><h5><span>{{user.fname+' '+(user.mname? user.mname + ' ' :
+                        '')+user.lname }}</span><a ng-click="addContact($event,user.email)" title="Add Contact" href="#"
+                                                   style="text-decoration: none"><i
+                            class="fas fa-plus-circle float-right text-success"></i></a></h5>
+                    </div>
+                    <p class="card-text">
+                    <p>{{user.email}}</p>
+                    <p ng-if="user.telephone">{{user.telephone}}</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div ng-if="users && !users.length" ng-repeat="user in recommendations" class="col-md-6 col-sm-12 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"><h5><span>{{user.fname+' '+(user.mname? user.mname + ' ' :
+                        '')+user.lname }}</span><a ng-click="addContact($event,user.email)" title="Add Contact" href="#"
+                                                   style="text-decoration: none"><i
+                            class="fas fa-plus-circle float-right text-success"></i></a></h5>
+                    </div>
+                    <p class="card-text">
+                    <p>{{user.email}}</p>
+                    <p ng-if="user.telephone">{{user.telephone}}</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

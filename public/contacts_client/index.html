@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo Contacts</title>
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/angular-toastr.css"/>
+    <link rel="stylesheet" type="text/css" href="fonts/fontawesome-free-5.4.2-web/css/all.min.css"/>
+</head>
+<body ng-app="app">
+<div class="navbar navbar-light bg-light" ng-controller="nav">
+    <a class="navbar-brand" href="#">Contacts Demo</a>
+    <form ng-cloak class="form-inline">
+        <label ng-show="loggedIn" class="text-secondary mr-3">Logged in as : <span
+                class="text-capitalize">{{user}}</span></label>
+        <a href="#" ng-show="loggedIn" ng-click="logout($event)" ng-cloak>Logout</a>
+        <a href="index.html#!/signup" ng-show="!loggedIn && !inSignUp()" ng-cloak>Signup</a>
+        <a href="index.html#!/login" ng-show="!loggedIn && inSignUp()" ng-cloak>Login</a>
+    </form>
+</div>
+<div class="container main-view" ng-view>
+
+</div>
+<script src="js/lib/angular.js" type="text/javascript"></script>
+<script src="js/lib/angular-cookie.min.js" type="text/javascript"></script>
+<script src="js/lib/angular-route.js" type="text/javascript"></script>
+<script src="js/lib/angular-toastr.tpls.js" type="text/javascript"></script>
+<script src="js/app.js" type="text/javascript"></script>
+</body>
+</html>
