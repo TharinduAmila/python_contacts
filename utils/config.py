@@ -1,5 +1,5 @@
 class ApiKeys:
-    neverbounce = "secret_be12318334bce3d91c0e6e1be52e97d6"
+    neverbounce = "xxxxx"
 
 
 class FlaskAppConfig:
@@ -14,6 +14,6 @@ class DataBaseConfig:
 
 
 class RedisConfig:
-    host = "redis-16450.c51.ap-southeast-2-1.ec2.cloud.redislabs.com"
-    port = 16450
-    password = "PtLuD6kgPo4KjIr2j0dGFFTkUgzC4Zgp"
+    host = "xxxxx"
+    port = 111111
+    password = "xxxx"
